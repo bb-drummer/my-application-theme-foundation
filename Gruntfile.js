@@ -35,7 +35,7 @@ module.exports = function(grunt) {
 
     compass: {
       options: {
-        importPath: ['bower_components/foundation/scss']
+        importPath: ['bower_components/foundation-sites/scss', 'bower_components/motion-ui/src']
       },                  
       dist: {                   
         options: {              
@@ -61,7 +61,7 @@ module.exports = function(grunt) {
     uglify: {
       dist: {
         files: {
-          'dist/assets/js/all.js': ['bower_components/jquery/dist/jquery.js', 'bower_components/foundation/js/foundation.js', 'src/assets/js/*']
+          'dist/assets/js/all.js': ['bower_components/jquery/dist/jquery.js', 'bower_components/foundation-sites/dist/foundation.js', 'src/assets/js/*']
         }
       }
     },

@@ -1,5 +1,5 @@
 {
-  "name": "foundation-compass-stack",
+  "name": "foundation-sites-template",
   "version": "0.0.1",
   "devDependencies": {
     "node-sass": "~0.7.0",
@@ -19,7 +19,20 @@
     "async": "~0.2.10",
     "underscore": "~1.5.2",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-qunit": "~0.4.0"
+    "grunt-contrib-qunit": "~0.4.0",
+
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.2.0",
+    "gulp-load-plugins": "^1.1.0",
+    "gulp-sass": "^2.1.0"
+  },
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp sass"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zurb/foundation-sites-template.git"
   },
   "dependencies": {
     "highlight.js": "~7.5.0"
