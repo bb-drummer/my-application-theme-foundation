@@ -24,8 +24,7 @@
         			'href' => $this->basePath($themePath . $oTwitterBootstrap->AppFavicon())
         			//'href' => '/'.$oTwitterBootstrap->AppFavicon()
      			))
-				//->appendStylesheet($this->basePath($themePath . 'css/fontawesome/css/font-awesome.min.css'))
-				//->appendStylesheet($this->basePath($themePath . 'js/datatables/css/dataTables.bootstrap.min.css'))
+				->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css')
 				->appendStylesheet($this->basePath($themePath . 'css/flag-icon-css/flag-icon.min.css'))
 				->appendStylesheet($this->basePath($themePath . 'css/app.css'))
         	;
@@ -60,7 +59,7 @@
 							->setMinDepth(0)
 							->setMaxDepth(3)
 							->setIconPrefixClass('fa fa-')
-							->setAttribute('data-responsive-menu', 'accordion')
+							//->setAttributes(array('data-responsive-menu' => 'accordion'))
 						;
 						echo $oNavBar->render();
 					?>
