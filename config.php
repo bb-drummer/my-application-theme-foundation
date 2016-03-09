@@ -2,8 +2,7 @@
 /**
  * BB's Zend Framework 2 Components
  * 
- * Theme 'Basic'
- *   - theme created by/taken from [Almsaeed Studio](https://almsaeedstudio.com)
+ * Theme 'Foundation'
  *   
  * @package		[MyApplication]
  * @package		BB's Zend Framework 2 Components

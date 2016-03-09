@@ -17,17 +17,15 @@
         ?>
         <!-- styles -->
         <?php 
-        	$themePath = "themes/bootstrap/assets/";
+        	$themePath = "themes/foundation/assets/";
         	$this->headLink(array(
         			'rel' => 'shortcut icon', 
         			'type' => 'image/vnd.microsoft.icon', 
         			'href' => $this->basePath($themePath . $oTwitterBootstrap->AppFavicon())
         			//'href' => '/'.$oTwitterBootstrap->AppFavicon()
      			))
-				->appendStylesheet($this->basePath($themePath . 'css/bootstrap/css/bootstrap.min.css'))
-				->appendStylesheet($this->basePath($themePath . 'css/bootstrap/css/bootstrap-theme.min.css'))
-				->appendStylesheet($this->basePath($themePath . 'css/fontawesome/css/font-awesome.min.css'))
-				->appendStylesheet($this->basePath($themePath . 'js/datatables/css/dataTables.bootstrap.min.css'))
+				//->appendStylesheet($this->basePath($themePath . 'css/fontawesome/css/font-awesome.min.css'))
+				//->appendStylesheet($this->basePath($themePath . 'js/datatables/css/dataTables.bootstrap.min.css'))
 				->appendStylesheet($this->basePath($themePath . 'css/flag-icon-css/flag-icon.min.css'))
 				->appendStylesheet($this->basePath($themePath . 'css/app.css'))
         	;
@@ -142,11 +140,8 @@
 		<?php 
         	$this->inlineScript()
 				->appendFile($this->basePath($themePath . 'js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
-				->appendFile($this->basePath($themePath . 'js/modernizr/modernizr.js'))
-				->appendFile($this->basePath($themePath . 'js/jquery/jquery.min.js'))
-				->appendFile($this->basePath($themePath . 'js/bootstrap/bootstrap.min.js'))
-				->appendFile($this->basePath($themePath . 'js/datatables/js/jquery.dataTables.js'))
-				->appendFile($this->basePath($themePath . 'js/datatables/js/dataTables.bootstrap.js'))
+				->appendFile($this->basePath($themePath . 'js/modernizr.js'))
+				->appendFile($this->basePath($themePath . 'js/all.js'))
 				->appendFile($this->basePath($themePath . 'js/app.js'))
 			;
 			$jsfiles = $oTwitterBootstrap->Config()->get('app')->get('js');

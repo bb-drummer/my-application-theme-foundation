@@ -52,7 +52,8 @@ module.exports = function(grunt) {
         files: [
           {expand:true, cwd: 'src/assets/', src: ['**/*','!{scss,js}/**/*'], dest: 'dist/assets/', filter:'isFile'},
           {expand:true, cwd: 'bower_components/modernizr/', src: 'modernizr.js', dest: 'dist/assets/js', filter:'isFile'},
-          {expand:true, cwd: 'dist/assets/', src: ['**/*','!{scss}/**/*'], dest: 'assets/', filter:'isFile'}
+          {expand:true, cwd: 'dist/assets/', src: ['**/*','!{scss}/**/*'], dest: 'assets/', filter:'isFile'},
+          {expand:true, cwd: 'bower_components/modernizr/', src: 'modernizr.js', dest: 'assets/js', filter:'isFile'}
         ]
       }
     },
