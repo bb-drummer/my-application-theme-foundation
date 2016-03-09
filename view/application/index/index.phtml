@@ -1,0 +1,13 @@
+<div class="jumbotron">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <h1><?php echo sprintf($this->translate('Welcome to %s[MyApplication]%s'), '<span class="appname">', '</span>') ?></h1>
+    <p>
+    	<?php echo sprintf($this->translate('Congratulations! You have successfully installed the %sMyApplication application%s.'), '<a href="'.$this->url('application/default', array('action' => 'about')).'">', '</a>'); ?><br />
+    	<?php echo sprintf($this->translate('You are currently running <b>Zend Framework version %s</b> with <b>php version %s</b>.'), \Zend\Version\Version::VERSION, phpversion()); ?><br />
+    	<small><?php echo sprintf($this->translate('This install is for demonstration purposes only.')); ?> <?php echo sprintf($this->translate('You are able to login with username "sysadmin" and password "sysadmin".')); ?><br />
+    	<?php echo sprintf($this->translate('Database and sessions will be flushed every ten minutes.')); ?></small>
+    </p>
+    <p><a class="btn btn-success btn-lg" href="//gitlab.dragon-projects.de:81/groups/zf2" target="_blank"><?php echo $this->translate('Follow on our GitLab') ?> &raquo;</a></p>
+</div>
+
+<?php include 'development_info.phtml'; ?>

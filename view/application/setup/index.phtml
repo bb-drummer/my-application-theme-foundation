@@ -1,0 +1,23 @@
+<div class="jumbotron">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <h2><?php echo sprintf($this->translate('%s[MyApplication]%s setup'), '<span class="appname">', '</span>') ?></h2>
+    <br />
+    <p><?php echo sprintf($this->translate('Welcome to the %s[MyApplication]%s setup module...'), '<span class="appname">', '</span>'); ?></p>
+    <p><?php echo sprintf($this->translate('Please select the setup method your desire. Maybe, you should consider creating a backup of the database first.')); ?></p>
+    <br />
+    <p>- <?php echo sprintf($this->translate('Backup &nbsp; %s[==&gt;&gt;]%s'), '<a href="'.$this->url('system', array('action' => 'backup')).'">', '</a>'); ?></p>
+    <br />
+    <p>- <?php echo sprintf($this->translate('Installation &nbsp; %s[==&gt;&gt;]%s'), '<a href="'.$this->url('setup', array('action' => 'install')).'">', '</a>'); ?></p>
+    <br />
+    <p>- <?php echo sprintf($this->translate('Update &nbsp; %s[==&gt;&gt;]%s'), '<a href="'.$this->url('setup', array('action' => 'update')).'">', '</a>'); ?></p>
+    <br />
+    <hr />
+    <br />
+    <p>
+        <?php echo sprintf($this->translate('server: %s, %s'), $_SERVER["SERVER_ADDR"], $_SERVER["SERVER_ADMIN"]); ?><br />
+        <?php echo sprintf($this->translate('system: %s, %s'), $_SERVER["SERVER_SOFTWARE"], $_SERVER["GATEWAY_INTERFACE"]); ?><br />
+        <?php echo sprintf($this->translate('php: v%s'), phpversion()); ?><br />
+        <?php echo sprintf($this->translate('ZendFramework2: v%s'), \Zend\Version\Version::VERSION); ?>
+     </p>
+    <br />
+</div>

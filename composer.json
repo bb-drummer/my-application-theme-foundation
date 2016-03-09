@@ -1,0 +1,30 @@
+{
+  "name" : "my-application/theme-foundation",
+  "description" : "ZF2Foundation - Responsive Foundation Theme",
+  "version" : "0.0.1",
+  "require" : {
+    "php" : "^5.5 || ^7.0",
+    "composer/installers" : "~1.0"
+  },
+  "license" : "BSD-3-Clause",
+  "keywords" : [ "foundation", "theme", "zendframework2" ],
+  "extra" : {
+    "installer-name" : "foundation",
+    "branch-alias" : {
+      "dev-master" : "master"
+    }
+  },
+  "autoload" : { },
+  "suggest" : { },
+  "scripts" : {
+    "post-install-cmd" : [ ],
+    "post-update-cmd" : [ ]
+  },
+  "type" : "zend-extra",
+  "homepage" : "http://my-application.net",
+  "authors" : [ {
+    "name" : "Björn Bartels",
+    "email" : "development@bjoernbartels.earth",
+    "homepage" : "https://bjoernbartels.earth"
+  } ]
+}

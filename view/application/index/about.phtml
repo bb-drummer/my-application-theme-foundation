@@ -1,0 +1,36 @@
+<div class="jumbotron">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <h2><?php echo sprintf($this->translate('About %s[MyApplication]%s'), '<span class="appname">', '</span>') ?></h2>
+    <br />
+    <p><?php echo sprintf($this->translate('This should serve as a fully functional basic ZendFramework2 application construct. Just do a checkout %sfrom our GitLab%s and adjust it to your needs.'), '<a href="//gitlab.dragon-projects.de:81/groups/zf2" target="_blank">', '</a>'); ?></p>
+    <br />
+    <p><?php echo sprintf($this->translate('Please, take a look into %sMyApplication User Help section%s to get some guidance around this application.'), '<a href="'.$this->url('application/default', array('action' => 'help')).'">', '</a>'); ?></p>
+    <br />
+    <p><?php echo sprintf($this->translate('If you need further assistance, please do not hesitate to contact %sMyApplication support%s.'), '<a href="'.$this->url('application/default', array('action' => 'support')).'">', '</a>'); ?></p>
+    <br />
+    <hr />
+    <br />
+    <p>
+        <?php echo sprintf($this->translate('This application currently runs upon...')); ?><br />
+        <?php echo sprintf($this->translate('server: %s, %s'), $_SERVER["SERVER_ADDR"], $_SERVER["SERVER_ADMIN"]); ?><br />
+        <?php echo sprintf($this->translate('system: %s, %s'), $_SERVER["SERVER_SOFTWARE"], $_SERVER["GATEWAY_INTERFACE"]); ?><br />
+        <?php echo sprintf($this->translate('php: v%s'), phpversion()); ?><br />
+        <?php echo sprintf($this->translate('ZendFramework2: v%s'), \Zend\Version\Version::VERSION); ?>
+     </p>
+    <br />
+    <hr />
+    <br />
+    <p>
+		<?php echo sprintf($this->translate('Powered by...')); ?><br />
+		<a href="http://php.net" target="_blank"><img src="/assets/themes/zf2-basic/img/php-logo.gif" height="20" alt="php" /> <span class="linklabel"> - php</span></a><br />
+		<a href="http://framework.zend.com" target="_blank"><img src="/assets/themes/zf2-basic/img/zf2-logo.png" height="16" alt="ZendFramework 2" /> <span class="linklabel"> - ZendFramework2</span></a><br />
+		<a href="http://www.w3.org/html/" target="_blank"><img src="/assets/themes/zf2-basic/img/html5-badge-h-solo.png" height="16" alt="HTML5" /> <span class="linklabel"> - HTML5</span></a><br />
+		<a href="http://jquery.com" target="_blank"><img src="/assets/themes/zf2-basic/img/jquery-logo.png" height="16" alt="jQuery" /> <span class="linklabel"> - jQuery</span></a><br />
+    </p>
+    <br />
+    <p><a class="btn btn-success btn-lg" href="//gitlab.dragon-projects.de:81/groups/zf2" target="_blank"><?php echo $this->translate('If you are interested, please follow development on our GitLab...') ?> &raquo;</a></p>
+    <br class="hide" />
+    <hr class="hide" />
+    <br class="hide" />
+    <span class="copyright hide"><small>&copy; <?php echo date('Y') ?> by <a href="//dragon-projects.net" target="_blank">[dragon-projects.net]</a> - <?php echo $this->translate('All rights reserved.') ?></small></span>
+</div>
