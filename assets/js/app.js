@@ -163,10 +163,13 @@
 						
 						
 						if (Foundation) {
-							var modalData = '<div class="reveal" data-reveal>'+data+'</div>',
-							    $modal = new Foundation.Reveal(modalData)
+							if ( $('#reveal').size() == 0 ) {
+								$('BODY').append('<div id="reveal" class="reveal" data-reveal></div>')
+							}
+							var modalData = ''+data+'',
+							    new Foundation.Reveal($('#reveal'))
 							;
-							$($modal).foundation('open');
+							$('#reveal').html(data).foundation('open');
 						} else {
 							$(data).modal($modalDefaults);
 						}
@@ -248,7 +251,7 @@
 			//
 			$body.on('click', $ajaxCTAClose, {}, function (oEvent) {
 				if (Foundation) {
-					$('.reveal').foundation('destroy');
+					$('#reveal').foundation('destroy');
 				} else {
 					$('.modal').modal('hide');
 				}
