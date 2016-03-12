@@ -24,11 +24,11 @@
         			'href' => $this->basePath($themePath . $oTwitterBootstrap->AppFavicon())
         			//'href' => '/'.$oTwitterBootstrap->AppFavicon()
      			))
-				//->appendStylesheet($this->basePath($themePath . 'css/app.css'))
 				->appendStylesheet($this->basePath($themePath . 'css/foundation.min.css'))
 			    ->appendStylesheet('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
 				//->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css')
 				->appendStylesheet($this->basePath($themePath . 'css/flag-icon-css/flag-icon.min.css'))
+				->appendStylesheet($this->basePath($themePath . 'css/app.css'))
         	;
             $cssfiles = $oTwitterBootstrap->Config()->get('app')->get('css');
             if (is_array($cssfiles) || ($cssfiles instanceof \Zend\Config\Config)) foreach ($cssfiles as $key => $file) {
@@ -36,13 +36,13 @@
             }
         	echo $this->headLink();
         	/*echo $this->headscript()
-        		//->appendFile($this->basePath($themePath . 'js/vendor/modernizr.js'))
         	;*/
 		?>
 		<?php 
         	$this->headScript()
-				//->appendFile($this->basePath($themePath . 'js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
-				->appendFile($this->basePath($themePath . 'js/vendor/jquery.js'))
+        		->appendFile($this->basePath($themePath . 'js/vendor/modernizr.js'))
+				->appendFile($this->basePath($themePath . 'js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+				->appendFile($this->basePath($themePath . 'js/jquery.js'))
 				//->appendFile($this->basePath($themePath . 'js/vendor/fastclick.js'))
 				//->appendFile($this->basePath($themePath . 'js/foundation/foundation.js'))
 				/*->appendFile($this->basePath($themePath . 'js/foundation/foundation.abide.js'))
@@ -206,15 +206,6 @@
 		    
 			$(document).ready(function() { 
 				
-				// force menu items to work (?!)
-				/*$('.menu A').on('click', function(oEvent) {
-					//if ($(this).hasClass('isClicked')) {
-						location.href = this.href;
-						oEvent.stopPropagation();
-						oEvent.preventDefault();
-						return (false);
-					//}
-				});*/
 			});
         </script>
     </body>
