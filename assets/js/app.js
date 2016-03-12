@@ -161,8 +161,11 @@
 					url		: $this.attr('href'),
 					success	: function (data) {
 						
+						
 						if (Foundation) {
-							$modal = new Foundation.Reveal(data);
+							var modalData = '<div class="reveal" data-reveal>'.data.'</div>',
+							    $modal = new Foundation.Reveal(modalData)
+							;
 							$($modal).foundation('open');
 						} else {
 							$(data).modal($modalDefaults);
