@@ -161,7 +161,12 @@
 					url		: $this.attr('href'),
 					success	: function (data) {
 						
-						$(data).modal($modalDefaults);
+						if (Foundation) {
+							$modal = new Foundation.Reveal(data);
+							$($modal).foundation('open');
+						} else {
+							$(data).modal($modalDefaults);
+						}
 						
 						document._old_href = window.location.href;
 					    window.history.pushState(
@@ -239,7 +244,11 @@
 			// modal close
 			//
 			$body.on('click', $ajaxCTAClose, {}, function (oEvent) {
-				$('.modal').modal('hide');
+				if (Foundation) {
+					$('.reveal').foundation('destroy');
+				} else {
+					$('.modal').modal('hide');
+				}
 				oEvent.preventDefault();
 				oEvent.stopPropagation();
 				return (false);
