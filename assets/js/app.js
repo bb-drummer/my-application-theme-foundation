@@ -163,7 +163,7 @@
 						
 						
 						if (Foundation) {
-							var modalData = '<div class="reveal" data-reveal>'.data.'</div>',
+							var modalData = '<div class="reveal" data-reveal>'+data+'</div>',
 							    $modal = new Foundation.Reveal(modalData)
 							;
 							$($modal).foundation('open');
