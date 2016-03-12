@@ -7,7 +7,7 @@
 	/** @var \Admin\Entity\User $user **/
 	$oUser = $this->zfcUserIdentity();
 ?>
-<html lang="<?php echo \Locale::getPrimaryLanguage(null) ?>">
+<html class="no-js" lang="<?php echo \Locale::getPrimaryLanguage(null) ?>">
     <head>
         <meta charset="utf-8" />
         <?php echo $this->headTitle('[BB] '. $this->translate($oTwitterBootstrap->AppTitle()))->setSeparator(' - ')->setAutoEscape(false) ?>
@@ -24,74 +24,119 @@
         			'href' => $this->basePath($themePath . $oTwitterBootstrap->AppFavicon())
         			//'href' => '/'.$oTwitterBootstrap->AppFavicon()
      			))
-				->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css')
+				//->appendStylesheet($this->basePath($themePath . 'css/app.css'))
+				->appendStylesheet($this->basePath($themePath . 'css/foundation.min.css'))
+			    ->appendStylesheet('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
+				//->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css')
 				->appendStylesheet($this->basePath($themePath . 'css/flag-icon-css/flag-icon.min.css'))
-				->appendStylesheet($this->basePath($themePath . 'css/app.css'))
         	;
             $cssfiles = $oTwitterBootstrap->Config()->get('app')->get('css');
             if (is_array($cssfiles) || ($cssfiles instanceof \Zend\Config\Config)) foreach ($cssfiles as $key => $file) {
                 $this->headLink()->appendStylesheet($this->basePath($file));
             }
         	echo $this->headLink();
+        	/*echo $this->headscript()
+        		//->appendFile($this->basePath($themePath . 'js/vendor/modernizr.js'))
+        	;*/
 		?>
-    </head>
+		<?php 
+        	$this->headScript()
+				//->appendFile($this->basePath($themePath . 'js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+				->appendFile($this->basePath($themePath . 'js/vendor/jquery.js'))
+				//->appendFile($this->basePath($themePath . 'js/vendor/fastclick.js'))
+				//->appendFile($this->basePath($themePath . 'js/foundation/foundation.js'))
+				/*->appendFile($this->basePath($themePath . 'js/foundation/foundation.abide.js'))
+				->appendFile($this->basePath($themePath . 'js/foundation/foundation.accordion.js'))
+				->appendFile($this->basePath($themePath . 'js/foundation/foundation.alert.js'))
+				->appendFile($this->basePath($themePath . 'js/foundation/foundation.clearing.js'))
+				->appendFile($this->basePath($themePath . 'js/foundation/foundation.dropdown.js'))
+				->appendFile($this->basePath($themePath . 'js/foundation/foundation.equalizer.js'))
+				->appendFile($this->basePath($themePath . 'js/foundation/foundation.interchange.js'))
+				->appendFile($this->basePath($themePath . 'js/foundation/foundation.joyride.js'))
+				->appendFile($this->basePath($themePath . 'js/foundation/foundation.magellan.js'))
+				->appendFile($this->basePath($themePath . 'js/foundation/foundation.offcanvas.js'))
+				->appendFile($this->basePath($themePath . 'js/foundation/foundation.orbit.js'))
+				->appendFile($this->basePath($themePath . 'js/foundation/foundation.reveal.js'))
+				->appendFile($this->basePath($themePath . 'js/foundation/foundation.slider.js'))
+				->appendFile($this->basePath($themePath . 'js/foundation/foundation.tab.js'))
+				->appendFile($this->basePath($themePath . 'js/foundation/foundation.tooltip.js'))
+				->appendFile($this->basePath($themePath . 'js/foundation/foundation.topbar.js'))*/
+				//->appendFile($this->basePath($themePath . 'js/foundation.js'))
+				->appendFile($this->basePath($themePath . 'js/foundation.min.js'))
+				//->appendFile($this->basePath($themePath . 'js/app.js'))
+			;
+			$jsfiles = $oTwitterBootstrap->Config()->get('app')->get('js');
+			if (is_array($jsfiles) || ($jsfiles instanceof \Zend\Config\Config)) foreach ($jsfiles as $key => $file) {
+			    $this->inlineScript()->appendFile($this->basePath($file));
+			}
+        ?>
+		<?php echo $this->headScript() ?>
+      </head>
     <body>
-    
-        <nav role="navigation">
-        
-			<div class="title-bar" data-responsive-toggle="realEstateMenu" data-hide-for="small">
-				<button class="menu-icon" type="button" data-toggle></button>
-				<div class="title-bar-title">Menu</div>
-				<a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath($themePath.$oTwitterBootstrap->AppLogo()) ?>" alt="<?php echo $oTwitterBootstrap->AppTitle(); ?>" />&nbsp;<?php echo $this->translate($oTwitterBootstrap->AppTitle()) ?></a>
+            
+			<div class="title-bar" data-responsive-toggle="my-application-main-menu" data-hide-for="medium">
+			  <button class="menu-icon" type="button" data-toggle></button>
+			  <div class="title-bar-title">Menu</div>
 			</div>
-			<div class="top-bar" id="realEstateMenu">
+			<div class="top-bar" id="my-application-main-menu">
 				<div class="top-bar-left">
 					<?php
 						//$oTwitterBootstrap = $this->bootstrap();
 						//$oBootstrapComponents = $oTwitterBootstrap->Components();
 						$oNavBar = $oTwitterBootstrap->Navbar('navigation')
-							->setUlClass('menu')
-							->setSubUlClass('submenu menu')
-							->setSubUlClassLevel1('submenu menu')
+							->setUlClass('dropdown menu')
+							->setSubUlClass('menu')
+							->setSubUlClassLevel1('menu')
 							->setDefaultLiClass('')
-							->setSubLiClass('has-submenu')
+							->setSubLiClass('')
 							->setSubLiClassLevel0('')
 							->setMinDepth(0)
 							->setMaxDepth(3)
 							->setIconPrefixClass('fa fa-')
+							//->setHrefSubToggleOverride("#")
 							//->setAttributes(array('data-responsive-menu' => 'accordion'))
 						;
-						echo $oNavBar->render();
+						$navbar = $oNavBar->render();
+						$navbar = str_replace("<ul class=\"dropdown", "<ul data-dropdown-menu class=\"dropdown", $navbar);
+						$navbar = str_replace("class=\"dropdown-toggle\"", "", $navbar);
+						//$navbar = str_replace("&#x2F;", "/", $navbar);
+						//$navbar = str_replace("&#x20;", " ", $navbar);
+						echo $navbar;
 					?>
 				</div>
 				<div class="top-bar-right">
 					<?php 
 						$oLocaleMenu = $oComponents->Languagemenu()
-							->setUlClass('menu')
-							->setSubUlClass('submenu menu')
-							->setSubUlClassLevel1('submenu menu')
+							->setUlClass('dropdown menu')
+							->setSubUlClass('menu')
+							->setSubUlClassLevel1('menu')
 							->setDefaultLiClass('')
-							->setSubLiClass('has-submenu')
+							->setSubLiClass('')
 							->setSubLiClassLevel0('')
 							->setIconPrefixClass('flag-icon flag-icon-')
+							->setHrefSubToggleOverride("#")
 						;
-						echo $oLocaleMenu->render(); 
+						$localemenu = $oLocaleMenu->render(); 
+						echo str_replace("<ul class=\"dropdown", "<ul data-dropdown-menu class=\"dropdown", $localemenu);
 					?>
 				</div>
 			</div>
-
-        </nav>
         
         <br />
         
         <div class="row columns">
+        	<nav role="navigation">
 			<?php 
 				$oBreadcrumbs = $oTwitterBootstrap->Breadcrumbs('navigation')
 					->setHeader( $this->translate('you are here :') )
 					->setMinDepth(0)
 				;
-				echo $oBreadcrumbs->render(); 
+				$breadcrumb = $oBreadcrumbs->render(); 
+				$breadcrumb = str_replace('<ol class="breadcrumb nav-breadcrumb">', '<ul class="breadcrumbs">', $breadcrumb);
+				$breadcrumb = str_replace('</ol>', '</ul>', $breadcrumb);
+				echo $breadcrumb;
 			?>
+			</nav>
         </div>
         
 		<?php 
@@ -155,19 +200,22 @@
         </div> <!-- /container -->
         
         <!-- Scripts -->
-		<?php 
-        	$this->inlineScript()
-				->appendFile($this->basePath($themePath . 'js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
-				->appendFile($this->basePath($themePath . 'js/modernizr.js'))
-				->appendFile($this->basePath($themePath . 'js/all.js'))
-				->appendFile($this->basePath($themePath . 'js/app.js'))
-			;
-			$jsfiles = $oTwitterBootstrap->Config()->get('app')->get('js');
-			if (is_array($jsfiles) || ($jsfiles instanceof \Zend\Config\Config)) foreach ($jsfiles as $key => $file) {
-			    $this->inlineScript()->appendFile($this->basePath($file));
-			}
-        ?>
-		<?php echo $this->headScript() ?>
         <?php echo $this->inlineScript() ?>
+        <script type="text/javascript">
+		    $(document).foundation();
+		    
+			$(document).ready(function() { 
+				
+				// force menu items to work (?!)
+				/*$('.menu A').on('click', function(oEvent) {
+					//if ($(this).hasClass('isClicked')) {
+						location.href = this.href;
+						oEvent.stopPropagation();
+						oEvent.preventDefault();
+						return (false);
+					//}
+				});*/
+			});
+        </script>
     </body>
 </html>
