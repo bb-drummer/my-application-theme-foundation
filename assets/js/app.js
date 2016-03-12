@@ -167,7 +167,7 @@
 								$('BODY').append('<div id="reveal" class="reveal" data-reveal></div>')
 							}
 							var modalData = ''+data+'',
-							    new Foundation.Reveal($('#reveal'))
+							    var m = new Foundation.Reveal($('#reveal'))
 							;
 							$('#reveal').html(data).foundation('open');
 						} else {
