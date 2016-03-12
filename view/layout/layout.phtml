@@ -63,7 +63,7 @@
 				->appendFile($this->basePath($themePath . 'js/foundation/foundation.topbar.js'))*/
 				//->appendFile($this->basePath($themePath . 'js/foundation.js'))
 				->appendFile($this->basePath($themePath . 'js/foundation.min.js'))
-				//->appendFile($this->basePath($themePath . 'js/app.js'))
+				->appendFile($this->basePath($themePath . 'js/app.js'))
 			;
 			$jsfiles = $oTwitterBootstrap->Config()->get('app')->get('js');
 			if (is_array($jsfiles) || ($jsfiles instanceof \Zend\Config\Config)) foreach ($jsfiles as $key => $file) {
