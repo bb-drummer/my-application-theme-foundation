@@ -414,6 +414,7 @@ BODY {
 		height				: 20px;
 		width				: 20px;
 		padding				: 0px;
+		margin              : 2px;
 	}
 	.matrix FORM input.btn.disabled, 
 	.matrix FORM input.btn[disabled], 
