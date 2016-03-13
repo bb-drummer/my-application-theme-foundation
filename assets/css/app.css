@@ -1,5 +1,19 @@
 @CHARSET "UTF-8";
 
+/**
+ * BB's Zend Framework 2 Components
+ * 
+ * myApplication client (init-)script
+ *   
+ * @package		[MyApplication]
+ * @package		BB's Zend Framework 2 Components
+ * @package		myApplication client script
+ * @author		Björn Bartels <development@bjoernbartels.earth>
+ * @link		https://gitlab.bjoernbartels.earth/groups/themes
+ * @license		http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
+ * @copyright	copyright (c) 2016 Björn Bartels <development@bjoernbartels.earth>
+ */
+
 /* @group MyApplication styles */
 
 BODY {
@@ -12,6 +26,11 @@ BODY {
 .debuginfo {
 	display				:  none;
 }
+	/* @group Site Footer */
+	FOOTER .poweredby img {
+	    max-height: 1.2rem;
+	}
+	/* @end */
 
 	/* @group multi-level navigation add on */
 	.navbar-brand IMG {

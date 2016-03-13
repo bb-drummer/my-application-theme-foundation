@@ -1,19 +1,73 @@
 /**
  * BB's Zend Framework 2 Components
  * 
- * Theme 'Basic'
- *   - theme created by/taken from [Almsaeed Studio](https://almsaeedstudio.com)
+ * myApplication client (init-)script
  *   
  * @package		[MyApplication]
  * @package		BB's Zend Framework 2 Components
- * @package		Theme 'Basic'
- * @author		Björn Bartels [dragon-projects.net] <info@dragon-projects.net>
+ * @package		myApplication client script
+ * @author		Björn Bartels <development@bjoernbartels.earth>
  * @link		https://gitlab.bjoernbartels.earth/groups/themes
  * @license		http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
- * @copyright	copyright (c) 2016 Björn Bartels [dragon-projects.net] <info@dragon-projects.net>
+ * @copyright	copyright (c) 2016 Björn Bartels <development@bjoernbartels.earth>
  */
-
+if (!jQuery) {
+	console.error('jQuery not found...');
+	return;
+}
 //jQuery.noConflict();
+
+if (!myApplication) {
+	var myApplication = {};
+}
+
+myApplication.openModal = function (data, updateWindowHref = false) {
+	if (Foundation) {
+		if ( $('#reveal').size() == 0 ) {
+			$('BODY').append('<div id="reveal" class="reveal" data-reveal></div>')
+		}
+		var modalData = ''+data+'',
+		    m = new Foundation.Reveal($('#reveal'))
+		;
+		$('#reveal').html(data).foundation('open');
+	} else {
+		$(data).modal($modalDefaults);
+	}
+	
+	if (updateWindowHref) {
+		document._old_href = window.location.href;
+	    window.history.pushState(
+	        {
+	            "html" : null,
+	            "pageTitle" : document.title
+	        },
+	        "",
+	        updateWindowHref
+	    );
+	}
+};
+
+myApplication.closeModal = function () {
+	if (Foundation) {
+		$('#reveal').foundation('close');
+		$('#reveal').foundation('destroy');
+	} else {
+		$('.modal').modal('hide');
+		$('.modal, .modal-backdrop').remove();
+	}
+	$('.reveal, .modal, .modal-backdrop').remove();
+	if (document._old_href) {
+	    window.history.pushState(
+            {
+                "html":null,
+                "pageTitle":document.title
+            },
+            "",
+            document._old_href
+	    );
+	    document._old_href = null;
+	}
+};
 
 (function ($, doc, win) {
 	
@@ -21,7 +75,11 @@
 		$lang = $('HTML').attr('lang') || 'en',
 		
 		// datatables
-		initDatatables = function () {
+		myApplication.initDatatables = function () {
+			if (!$.dataTable) {
+				console.warn('jQuery dataTable plug-in not found...');
+				return;
+			}
 			$('.datatable').each(function (idx, elm) {
 				var $table = $(this),
 					$lang_url = {
@@ -85,7 +143,7 @@
 		},
 		
 		// acl matrix/table
-		initCTAXHRAclMatrix = function () {
+		myApplication.initCTAXHRAclMatrix = function () {
 			$('.datatable.matrix').each(function (idx, elm) {
 				var $table = $(this),
 					$switches = $table.find('FORM.allow, FORM.deny')
@@ -132,7 +190,11 @@
 		},
 	
 		// (bootstrap) modals
-		initCTAXHRModals = function () {
+		myApplication.initCTAXHRModals = function () {
+			if (!$.modal && !Foundation.Reveal) {
+				console.warn('jQuery Modal and/or Foundation Reveal plug-ins not found...');
+				return;
+			}
 			var $body = $('BODY'),
 				$modalDefaults = {
 					show: true
@@ -161,7 +223,8 @@
 					url		: $this.attr('href'),
 					success	: function (data) {
 						
-						
+						myApplication.openModal(data, $btnUrl);
+						/*
 						if (Foundation) {
 							if ( $('#reveal').size() == 0 ) {
 								$('BODY').append('<div id="reveal" class="reveal" data-reveal></div>')
@@ -183,10 +246,13 @@
 				            "",
 				            $btnUrl
 					    );
-						
-						$('#'+$actioncontext).dataTable().api().ajax.reload(function ( tabledata ) {
-							// console.log( tabledata );
-						}, true);
+						*/
+						if ($.dataTable) {
+							//$('#'+$actioncontext).dataTable().api().ajax.reload(function ( tabledata ) {
+							$('.datatable').dataTable().api().ajax.reload(function ( tabledata ) {
+								// console.log( tabledata );
+							}, true);
+						}
 						
 					}
 				});
@@ -220,7 +286,10 @@
 					url		: formURL,
 					data	: formData,
 					success	: function (data) {
-						
+
+						myApplication.closeModal();
+						myApplication.openModal(data, $formURL);
+						/*
 					    window.history.pushState(
 				            {
 				                "html" : null,
@@ -234,9 +303,13 @@
 						}
 						$('.modal').modal('hide');
 						$(data).modal($modalDefaults);
-						$('.datatable').dataTable().api().ajax.reload(function ( tabledata ) {
-							// console.log( tabledata );
-						}, true);
+						*/
+						
+						if ($.dataTable) {
+							$('.datatable').dataTable().api().ajax.reload(function ( tabledata ) {
+								// console.log( tabledata );
+							}, true);
+						}
 						
 					}
 				});
@@ -250,24 +323,8 @@
 			// modal close
 			//
 			$body.on('click', $ajaxCTAClose, {}, function (oEvent) {
-				if (Foundation) {
-					$('#reveal').foundation('close');
-					$('#reveal').foundation('destroy');
-				} else {
-					$('.modal').modal('hide');
-					$('.modal, .modal-backdrop').remove();
-				}
-				if (document._old_href) {
-				    window.history.pushState(
-			            {
-			                "html":null,
-			                "pageTitle":document.title
-			            },
-			            "",
-			            document._old_href
-				    );
-				    document._old_href = null;
-				}
+				myApplication.closeModal();
+				
 				oEvent.preventDefault();
 				oEvent.stopPropagation();
 				return (false);
@@ -281,13 +338,13 @@
 		
 	$doc.ready(function () {
 		try {
-			initDatatables();
+			myApplication.initDatatables();
 		} catch (ex) {}
 		try {
-			initCTAXHRModals();
+			myApplication.initCTAXHRModals();
 		} catch (ex) {}
 		try {
-			initCTAXHRAclMatrix();
+			myApplication.initCTAXHRAclMatrix();
 		} catch (ex) {}
 	});
 
