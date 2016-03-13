@@ -26,7 +26,8 @@
      			))
 				->appendStylesheet($this->basePath($themePath . 'css/foundation.min.css'))
 			    ->appendStylesheet('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
-				//->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css')
+				->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css')
+				->appendStylesheet($this->basePath($themePath . 'js/datatables/css/dataTables.foundation.min.css'))
 				->appendStylesheet($this->basePath($themePath . 'css/flag-icon-css/flag-icon.min.css'))
 				->appendStylesheet($this->basePath($themePath . 'css/app.css'))
         	;
@@ -63,6 +64,8 @@
 				->appendFile($this->basePath($themePath . 'js/foundation/foundation.topbar.js'))*/
 				//->appendFile($this->basePath($themePath . 'js/foundation.js'))
 				->appendFile($this->basePath($themePath . 'js/foundation.min.js'))
+				->appendFile($this->basePath($themePath . 'js/datatables/js/jquery.dataTables.min.js'))
+				->appendFile($this->basePath($themePath . 'js/datatables/js/dataTables.foundation.min.js'))
 				->appendFile($this->basePath($themePath . 'js/app.js'))
 			;
 			$jsfiles = $oTwitterBootstrap->Config()->get('app')->get('js');

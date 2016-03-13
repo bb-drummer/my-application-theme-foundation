@@ -30,7 +30,7 @@
 						'fr' : '//cdn.datatables.net/plug-ins/1.10.9/i18n/French.json'
 					},
 					datatableOptions = {
-						renderer : 'bootstrap',
+						renderer : ((Foundation) ? 'foundation' : 'bootstrap'),
 						language : {
 							url : $lang_url[$lang]
 						},
