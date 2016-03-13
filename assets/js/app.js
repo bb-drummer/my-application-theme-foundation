@@ -251,17 +251,12 @@
 			//
 			$body.on('click', $ajaxCTAClose, {}, function (oEvent) {
 				if (Foundation) {
+					$('#reveal').foundation('close');
 					$('#reveal').foundation('destroy');
 				} else {
 					$('.modal').modal('hide');
+					$('.modal, .modal-backdrop').remove();
 				}
-				oEvent.preventDefault();
-				oEvent.stopPropagation();
-				return (false);
-			});
-	
-			$body.on('hidden.bs.modal', '.modal', {}, function (oEvent) {
-				$('.modal, .modal-backdrop').remove();
 				if (document._old_href) {
 				    window.history.pushState(
 			            {
@@ -273,7 +268,13 @@
 				    );
 				    document._old_href = null;
 				}
+				oEvent.preventDefault();
+				oEvent.stopPropagation();
+				return (false);
 			});
+	
+			/*$body.on('hidden.bs.modal', '.modal', {}, function (oEvent) {
+			});*/
 			
 		}
 	;
