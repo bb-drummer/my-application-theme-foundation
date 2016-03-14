@@ -30,7 +30,7 @@
 				->appendStylesheet($this->basePath($themePath . 'js/datatables/css/dataTables.foundation.min.css'))
 				->appendStylesheet($this->basePath($themePath . 'css/flag-icon-css/flag-icon.min.css'))
 				
-				->appendStylesheet($this->basePath('application-assets/dist/myapplication.min.css'))
+				->appendStylesheet($this->basePath('application-assets/dist/myapplication.css'))
         	;
             $cssfiles = $oTwitterBootstrap->Config()->get('app')->get('css');
             if (is_array($cssfiles) || ($cssfiles instanceof \Zend\Config\Config)) foreach ($cssfiles as $key => $file) {
@@ -68,7 +68,7 @@
 				->appendFile($this->basePath($themePath . 'js/datatables/js/jquery.dataTables.min.js'))
 				->appendFile($this->basePath($themePath . 'js/datatables/js/dataTables.foundation.min.js'))
 				
-				->appendFile($this->basePath('application-assets/dist/myapplication.min.js'))
+				->appendFile($this->basePath('application-assets/dist/myapplication.js'))
 			;
 			$jsfiles = $oTwitterBootstrap->Config()->get('app')->get('js');
 			if (is_array($jsfiles) || ($jsfiles instanceof \Zend\Config\Config)) foreach ($jsfiles as $key => $file) {
