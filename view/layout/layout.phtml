@@ -18,11 +18,11 @@
         <!-- styles -->
         <?php 
         	$themePath = "themes/foundation/assets/";
+        	$assetPath = "application-assets/dist/";
         	$this->headLink(array(
         			'rel' => 'shortcut icon', 
         			'type' => 'image/vnd.microsoft.icon', 
         			'href' => $this->basePath($themePath . $oTwitterBootstrap->AppFavicon())
-        			//'href' => '/'.$oTwitterBootstrap->AppFavicon()
      			))
 				->appendStylesheet($this->basePath($themePath . 'css/foundation.min.css'))
 			    ->appendStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
@@ -30,45 +30,23 @@
 				->appendStylesheet($this->basePath($themePath . 'js/datatables/css/dataTables.foundation.min.css'))
 				->appendStylesheet($this->basePath($themePath . 'css/flag-icon-css/flag-icon.min.css'))
 				
-				->appendStylesheet($this->basePath('application-assets/dist/myapplication.css'))
+				->appendStylesheet($this->basePath($assetPath . 'myapplication.css'))
         	;
             $cssfiles = $oTwitterBootstrap->Config()->get('app')->get('css');
             if (is_array($cssfiles) || ($cssfiles instanceof \Zend\Config\Config)) foreach ($cssfiles as $key => $file) {
                 $this->headLink()->appendStylesheet($this->basePath($file));
             }
         	echo $this->headLink();
-        	/*echo $this->headscript()
-        	;*/
-		?>
-		<?php 
+        	
         	$this->headScript()
         		->appendFile($this->basePath($themePath . 'js/modernizr.js'))
 				->appendFile($this->basePath($themePath . 'js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
 				->appendFile($this->basePath($themePath . 'js/jquery.js'))
-				//->appendFile($this->basePath($themePath . 'js/vendor/fastclick.js'))
-				//->appendFile($this->basePath($themePath . 'js/foundation/foundation.js'))
-				/*->appendFile($this->basePath($themePath . 'js/foundation/foundation.abide.js'))
-				->appendFile($this->basePath($themePath . 'js/foundation/foundation.accordion.js'))
-				->appendFile($this->basePath($themePath . 'js/foundation/foundation.alert.js'))
-				->appendFile($this->basePath($themePath . 'js/foundation/foundation.clearing.js'))
-				->appendFile($this->basePath($themePath . 'js/foundation/foundation.dropdown.js'))
-				->appendFile($this->basePath($themePath . 'js/foundation/foundation.equalizer.js'))
-				->appendFile($this->basePath($themePath . 'js/foundation/foundation.interchange.js'))
-				->appendFile($this->basePath($themePath . 'js/foundation/foundation.joyride.js'))
-				->appendFile($this->basePath($themePath . 'js/foundation/foundation.magellan.js'))
-				->appendFile($this->basePath($themePath . 'js/foundation/foundation.offcanvas.js'))
-				->appendFile($this->basePath($themePath . 'js/foundation/foundation.orbit.js'))
-				->appendFile($this->basePath($themePath . 'js/foundation/foundation.reveal.js'))
-				->appendFile($this->basePath($themePath . 'js/foundation/foundation.slider.js'))
-				->appendFile($this->basePath($themePath . 'js/foundation/foundation.tab.js'))
-				->appendFile($this->basePath($themePath . 'js/foundation/foundation.tooltip.js'))
-				->appendFile($this->basePath($themePath . 'js/foundation/foundation.topbar.js'))*/
-				//->appendFile($this->basePath($themePath . 'js/foundation.js'))
 				->appendFile($this->basePath($themePath . 'js/foundation.min.js'))
 				->appendFile($this->basePath($themePath . 'js/datatables/js/jquery.dataTables.min.js'))
 				->appendFile($this->basePath($themePath . 'js/datatables/js/dataTables.foundation.min.js'))
 				
-				->appendFile($this->basePath('application-assets/dist/myapplication.js'))
+				->appendFile($this->basePath($assetPath . 'myapplication.js'))
 			;
 			$jsfiles = $oTwitterBootstrap->Config()->get('app')->get('js');
 			if (is_array($jsfiles) || ($jsfiles instanceof \Zend\Config\Config)) foreach ($jsfiles as $key => $file) {
@@ -192,13 +170,13 @@
             <hr>
             <footer>
                 <p>
-                	<span class="pull-left copyright">&copy; <?php echo date('Y') ?> by <a href="//dragon-projects.net" target="_blank">[dragon-projects.net]</a> - <?php echo $this->translate('All rights reserved.') ?></span>
+                	<span class="pull-left copyright">&copy; <?php echo date('Y') ?> by <a href="//bjoernbartels.earth" target="_blank">[Bj&ouml;rn Bartels]</a> - <?php echo $this->translate('All rights reserved.') ?></span>
                 	<span class="pull-right poweredby">
                 		<?php echo $this->translate('Powered by') ?> &nbsp;
-                		<a href="http://php.net" target="_blank"><img src="<?php echo $this->basePath($themePath.'img/php-logo.gif') ?>" height="20" alt="php" /></a> &nbsp;
-                		<a href="http://framework.zend.com" target="_blank"><img src="<?php echo $this->basePath($themePath.'img/zf2-logo.png') ?>" height="16" alt="ZendFramework 2" /></a> &nbsp;
-                		<a href="http://www.w3.org/html/" target="_blank"><img src="<?php echo $this->basePath($themePath.'img/html5-badge-h-solo.png') ?>" height="16" alt="HTML5" /></a> &nbsp;
-                		<a href="http://jquery.com" target="_blank"><img src="<?php echo $this->basePath($themePath.'img/jquery-logo.png') ?>" height="16" alt="jQuery" /></a>
+                		<a href="http://php.net" target="_blank"><img src="<?php echo $this->basePath($assetPath.'img/php-logo.gif') ?>" height="20" alt="php" /></a> &nbsp;
+                		<a href="http://framework.zend.com" target="_blank"><img src="<?php echo $this->basePath($assetPath.'img/zf2-logo.png') ?>" height="16" alt="ZendFramework 2" /></a> &nbsp;
+                		<a href="http://www.w3.org/html/" target="_blank"><img src="<?php echo $this->basePath($assetPath.'img/html5-badge-h-solo.png') ?>" height="16" alt="HTML5" /></a> &nbsp;
+                		<a href="http://jquery.com" target="_blank"><img src="<?php echo $this->basePath($assetPath.'img/jquery-logo.png') ?>" height="16" alt="jQuery" /></a>
                 	</span>
                </p>
             </footer>
