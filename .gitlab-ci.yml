@@ -1,0 +1,5 @@
+trigger:
+  type: deploy
+  script:
+    - "curl -X POST -F token=3dc1f1f64ea953479211d26469e985 -F ref=master https://gitlab.bjoernbartels.earth/api/v3/projects/21/trigger/builds"
+
