@@ -77,11 +77,11 @@
 							->setMaxDepth(3)
 							->setIconPrefixClass('fa fa-')
 							//->setHrefSubToggleOverride("#")
-							//->setAttributes(array('data-responsive-menu' => 'accordion'))
+							->setAttributes(array('data-dropdown-menu' => ''))
 						;
 						$navbar = $oNavBar->render();
-						$navbar = str_replace("<ul class=\"dropdown", "<ul data-dropdown-menu class=\"dropdown", $navbar);
-						$navbar = str_replace("class=\"dropdown-toggle\"", "", $navbar);
+						//$navbar = str_replace("<ul class=\"dropdown", "<ul data-dropdown-menu class=\"dropdown", $navbar);
+						//$navbar = str_replace("class=\"dropdown-toggle\"", "", $navbar);
 						//$navbar = str_replace("&#x2F;", "/", $navbar);
 						//$navbar = str_replace("&#x20;", " ", $navbar);
 						echo $navbar;
@@ -98,9 +98,11 @@
 							->setSubLiClassLevel0('')
 							->setIconPrefixClass('flag-icon flag-icon-')
 							->setHrefSubToggleOverride("#")
+							->setAttributes(array('data-dropdown-menu' => ''))
 						;
 						$localemenu = $oLocaleMenu->render(); 
-						echo str_replace("<ul class=\"dropdown", "<ul data-dropdown-menu class=\"dropdown", $localemenu);
+						echo $localemenu; 
+						// echo str_replace("<ul class=\"dropdown", "<ul data-dropdown-menu class=\"dropdown", $localemenu);
 					?>
 				</div>
 			</div>
