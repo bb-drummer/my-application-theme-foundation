@@ -1,7 +1,7 @@
 <?php 
 	echo $this->doctype(); 
-	/** @var \UIComponents\View\Helper\Bootstrap $oTwitterBootstrap **/
-	$oTwitterBootstrap = $this->bootstrap();
+	/** @var \UIComponents\View\Helper\Utilities $oUtilities **/
+	$oUtilities = $this->bootstrap();
 	/** @var \UIComponents\View\Helper\Components $oComponents **/
 	$oComponents = $this->Components();
 	/** @var \Admin\Entity\User $user **/
@@ -10,7 +10,7 @@
 <html class="no-js" lang="<?php echo \Locale::getPrimaryLanguage(null) ?>">
     <head>
         <meta charset="utf-8" />
-        <?php echo $this->headTitle('[BB] '. $this->translate($oTwitterBootstrap->AppTitle()))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?php echo $this->headTitle('[BB] '. $this->translate($oUtilities->AppTitle()))->setSeparator(' - ')->setAutoEscape(false) ?>
         <?php echo $this->headMeta()
             ->appendName('viewport', 'width=device-width, initial-scale=1.0')
             ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
@@ -22,7 +22,7 @@
         	$this->headLink(array(
         			'rel' => 'shortcut icon', 
         			'type' => 'image/vnd.microsoft.icon', 
-        			'href' => $this->basePath($themePath . $oTwitterBootstrap->AppFavicon())
+        			'href' => $this->basePath($themePath . $oUtilities->AppFavicon())
      			))
 				->appendStylesheet($this->basePath($themePath . 'css/foundation.min.css'))
 			    ->appendStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
@@ -32,7 +32,7 @@
 				
 				->appendStylesheet($this->basePath($assetPath . 'myapplication.css'))
         	;
-            $cssfiles = $oTwitterBootstrap->Config()->get('app')->get('css');
+            $cssfiles = $oUtilities->Config()->get('app')->get('css');
             if (is_array($cssfiles) || ($cssfiles instanceof \Zend\Config\Config)) foreach ($cssfiles as $key => $file) {
                 $this->headLink()->appendStylesheet($this->basePath($file));
             }
@@ -48,7 +48,7 @@
 				
 				->appendFile($this->basePath($assetPath . 'myapplication.js'))
 			;
-			$jsfiles = $oTwitterBootstrap->Config()->get('app')->get('js');
+			$jsfiles = $oUtilities->Config()->get('app')->get('js');
 			if (is_array($jsfiles) || ($jsfiles instanceof \Zend\Config\Config)) foreach ($jsfiles as $key => $file) {
 			    $this->inlineScript()->appendFile($this->basePath($file));
 			}
@@ -64,9 +64,9 @@
 			<div class="top-bar" id="my-application-main-menu">
 				<div class="top-bar-left">
 					<?php
-						//$oTwitterBootstrap = $this->bootstrap();
-						//$oBootstrapComponents = $oTwitterBootstrap->Components();
-						$oNavBar = $oTwitterBootstrap->Navbar('navigation')
+						//$oUtilities = $this->bootstrap();
+						//$oBootstrapComponents = $oUtilities->Components();
+						$oNavBar = $oComponents->Navbar('navigation')
 							->setUlClass('dropdown menu')
 							->setSubUlClass('menu')
 							->setSubUlClassLevel1('menu')
@@ -110,7 +110,7 @@
         <div class="row columns">
         	<nav role="navigation">
 			<?php 
-				$oBreadcrumbs = $oTwitterBootstrap->Breadcrumbs('navigation')
+				$oBreadcrumbs = $oComponents->Breadcrumbs('navigation')
 					->setHeader( $this->translate('you are here :') )
 					->setMinDepth(0)
 				;
