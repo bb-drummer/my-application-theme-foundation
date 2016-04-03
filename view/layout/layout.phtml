@@ -66,7 +66,7 @@
 					<?php
 						//$oUtilities = $this->bootstrap();
 						//$oBootstrapComponents = $oUtilities->Components();
-						$oNavBar = $oComponents->Topbar('navigation')
+						$oNavBar = $oComponents->Topbar()
 							->setUlClass('dropdown menu')
 							->setSubUlClass('menu')
 							->setSubUlClassLevel1('menu')
@@ -112,7 +112,7 @@
         <div class="row columns">
         	<nav role="navigation">
 			<?php 
-				$oBreadcrumbs = $oComponents->Breadcrumbs('navigation')
+				$oBreadcrumbs = $oComponents->Breadcrumbs()
 					->setHeader( $this->translate('you are here :') )
 					->setMinDepth(0)
 				;
@@ -125,7 +125,7 @@
         </div>
         
 		<?php 
-			$oToolbarNav = $oComponents->Toolbar('toolbarnavigation');
+			$oToolbarNav = $oComponents->Toolbar();
 			if ($oToolbarNav->hasPages()) {
 				$oToolbarNav 
 					->setUlClass('btn-group btn-group-sm')
